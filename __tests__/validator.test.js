@@ -1,10 +1,10 @@
-'use strict';
+
 
 const validator = require('../lib/validator.js');
-const personRules = require('../lib/object.js')
+const personRules = require('../lib/object.js');
 
 describe('validator module performs basic validation of', () => {
-  
+
 
 
   // TODO: Make this series of tests less repetitive ... DRY it out
@@ -13,45 +13,45 @@ describe('validator module performs basic validation of', () => {
   let num = 1;
   let arr = ['a'];
   let obj = { x: 'y' };
-  let func = () => { };
+  let func = () => {};
   let bool = false;
-  
-  let dataType = [str, num, arr, obj, func, bool]
-  
-  
+
+  let dataType = [str, num, arr, obj, func, bool];
+
+
   it('strings', () => {
     expect(validator.isString(str)).toBeTruthy();
     dataType.forEach(element => {
-        if (element != str) {
-            expect(validator.isString(element)).toBeFalsy();
-        }
+      if (element !== str) {
+        expect(validator.isString(element)).toBeFalsy();
+      }
     });
   });
 
   it('numbers', () => {
     expect(validator.isNumber(num)).toBeTruthy();
     dataType.forEach(element => {
-        if (element != num) {
-            expect(validator.isNumber(element)).toBeFalsy();
-        }
+      if (element !== num) {
+        expect(validator.isNumber(element)).toBeFalsy();
+      }
     });
   });
 
   it('arrays', () => {
     expect(validator.isArray(arr)).toBeTruthy();
     dataType.forEach(element => {
-        if (element != arr) {
-            expect(validator.isArray(element)).toBeFalsy();
-        }
+      if (element !== arr) {
+        expect(validator.isArray(element)).toBeFalsy();
+      }
     });
   });
 
   it('objects', () => {
     expect(validator.isObject(obj)).toBeTruthy();
     dataType.forEach(element => {
-        if (element != obj) {
-            expect(validator.isObject(element)).toBeFalsy();
-        }
+      if (element !== obj) {
+        expect(validator.isObject(element)).toBeFalsy();
+      }
     });
 
   });
@@ -59,18 +59,18 @@ describe('validator module performs basic validation of', () => {
   it('booleans', () => {
     expect(validator.isBoolean(bool)).toBeTruthy();
     dataType.forEach(element => {
-        if (element != bool) {
-            expect(validator.isBoolean(element)).toBeFalsy();
-        }
+      if (element !== bool) {
+        expect(validator.isBoolean(element)).toBeFalsy();
+      }
     });
   });
 
   it('functions', () => {
     expect(validator.isFunction(func)).toBeTruthy();
     dataType.forEach(element => {
-        if (element != func) {
-            expect(validator.isFunction(element)).toBeFalsy();
-        }
+      if (element !== func) {
+        expect(validator.isFunction(element)).toBeFalsy();
+      }
     });
   });
 
@@ -84,7 +84,7 @@ const susan = {
   name:'Susan McDeveloperson',
   age: 37,
   children:['Max', 'Vecky'],
-  pet: 'catty'
+  pet: 'catty',
 };
 
 
@@ -107,13 +107,13 @@ describe('validator module performs complex validations', () => {
   it('validates the types of values contained in an array', () => {
     // i.e. an array of all strings or numbers
     susan.children.forEach(kid => {
-      expect(typeof(kid)).toEqual(personRules.fields.children.valueType)
-    })
+      expect(typeof(kid)).toEqual(personRules.fields.children.valueType);
+    });
   });
 
   it('validates a value array against an approved list', () => {
     // i.e. a string might only be allowed to be "yes" or "no"
-    expect(susan.pet).toBeTruthy
+    expect(susan.pet).toBeTruthy;
   });
 
   // TODO: Cover so, so many more cases
